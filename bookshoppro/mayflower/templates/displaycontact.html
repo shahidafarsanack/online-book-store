@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="{% url 'contactsave' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <center><h1 class="h2_cls">contact </h1></center>
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email id</th>
+                <th>message</th>
+            </tr>
+            </thead>
+              {% for i in data %}
+            <tr>
+                <td> {{ i.Name }}</td>
+                <td> {{ i.Email }}</td>
+                <td> {{ i.Message }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
+</form>
+
+</body>
+</html>
+{% endblock %}
